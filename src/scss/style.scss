@@ -1,12 +1,47 @@
+@import 'helpers/_animate';
+
+html{
+  overflow-y: scroll;
+}
 body {
 
-  }
+  background-image: url(/images/backdrop.png);
+  background-repeat: repeat-x;
+  background-position: absolute;
+  background-size: 1600px;
+}
 
-  h1{
-    text-align: center;
+h1 {
+  text-align: center;
+}
 
-    .dog{
-      height:40px;
-      width: auto;
-    }
-  }
+.dog {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  margin-top: 280px;
+  height: 300px;
+}
+
+.closedChest{
+  margin-top: 400px;
+  margin-left: 100px;
+  height: 150px;
+}
+
+.treasure{
+  display: inline-block;
+}
+
+.key{
+  display: none;
+  height: 100px;
+}
+
+.wall{
+  margin-top: 150px;
+  height: 450px;
+  left: 1000px;
+  position:absolute;
+
+}
