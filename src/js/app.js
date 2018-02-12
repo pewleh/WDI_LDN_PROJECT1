@@ -51,9 +51,11 @@ $(() => {
           if (!key) {
             if ($doggy.position().left >= 850) {
               return;
-            }if ($doggy.position().left === 300){
+            }if ($doggy.position().left >= 300){
               $heading.text('Use A and D to move');
               console.log('working');
+            }if($doggy.position().left >= 800){
+              $heading.text('You will encounter puzzles to unlock passage through the game. Try clicking on the chest!');
             }
           }
           if($doggy.attr('src').match(/png/)) {
@@ -75,6 +77,7 @@ $(() => {
     $wall.remove();
     console.log('help');
     key = true;
+    $heading.text('Great Job! Walk on down!');
   });
 
 });

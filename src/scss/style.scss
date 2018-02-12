@@ -2,6 +2,7 @@
 
 html{
   overflow-y: scroll;
+  font-family: 'Kavivanar', cursive;
 }
 body {
 
@@ -13,18 +14,20 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 33px;
+  margin-top: 30px;
 }
 
 .dog {
   height: 100px;
   width: auto;
   position: absolute;
-  margin-top: 280px;
+  margin-top: 240px;
   height: 300px;
 }
 
 .closedChest{
-  margin-top: 400px;
+  margin-top: 380px;
   margin-left: 100px;
   height: 150px;
 }
@@ -39,7 +42,7 @@ h1 {
 }
 
 .wall{
-  margin-top: 150px;
+  margin-top: 110px;
   height: 450px;
   left: 1000px;
   position:absolute;
