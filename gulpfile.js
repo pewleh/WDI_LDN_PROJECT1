@@ -44,8 +44,10 @@ gulp.task('fonts', ['clean:fonts'], () => {
 });
 
 gulp.task('images', ['clean:images'], () => {
-  return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('public/images'));
+  pump([
+    gulp.src('src/images/**/*'),
+    gulp.dest('public/images')
+  ]);
 });
 
 gulp.task('sounds', ['clean:sounds'], () => {
