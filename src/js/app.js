@@ -43,10 +43,11 @@ $(() => {
       colorPos=0;
     }
 
-    console.log('click');
     $color1.css({'background-color': `${colorLevel[colorPos]}`});
     colorPos += 1;
+    checkColors();
   });
+
   $color2.click(function(){
     const colorLevel = [
       'pink',
@@ -59,10 +60,11 @@ $(() => {
     if(colorPos > [5]){
       colorPos=0;
     }
-    console.log('click');
     $color2.css({'background-color': `${colorLevel[colorPos]}`});
     colorPos += 1;
+    checkColors();
   });
+
   $color3.click(function(){
     const colorLevel = [
       'pink',
@@ -75,9 +77,9 @@ $(() => {
     if(colorPos > [5]){
       colorPos=0;
     }
-    console.log('click');
     $color3.css({'background-color': `${colorLevel[colorPos]}`});
     colorPos += 1;
+    checkColors();
   });
 
 
@@ -146,7 +148,7 @@ $(() => {
         $doggy.attr('src', '/images/dog_right.gif');
       }
       $doggy.css({ left: '+=10' });
-      console.log('lol', $doggy.position().left, key);
+      // console.log('lol', $doggy.position().left, key);
     }
     if ($doggy.position().left >= 2000) changeLevel();
   }
@@ -175,11 +177,15 @@ $(() => {
     // has key = move
     return true;
   }
-  // function checkColors(){
-  //   if ($color1 === 'red' && $color2 === 'blue' && $color3 === 'yellow'){
-  //     $Wall2.remove();
-  //   }
-  // }
+
+  function checkColors(){
+    console.log('checking');
+    console.log($color1.css('background-color'));
+    if ($color1.css('background-color') === 'rgb(255, 255, 0)' && $color2.css('background-color') === 'rgb(0, 0, 255)' && $color3.css('background-color') === 'rgb(255, 0, 0)'){
+      console.log('correct colors');
+      $Wall2.remove();
+    }
+  }
 
 
 });
