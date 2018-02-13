@@ -4,12 +4,13 @@ html{
   overflow-y: scroll;
   font-family: 'Kavivanar', cursive;
 }
-body {
-
-  background-image: url(/images/backdrop.png);
+body{
+  background-image: url(/images/backdrop7.png);
   background-repeat: repeat-x;
   background-position: absolute;
   background-size: 1600px;
+  display: relative;
+
 }
 
 h1 {
@@ -22,12 +23,12 @@ h1 {
   height: 100px;
   width: auto;
   position: absolute;
-  margin-top: 240px;
+  margin-top: 450px;
   height: 300px;
 }
 
 .closedChest{
-  margin-top: 380px;
+  margin-top: 570px;
   margin-left: 100px;
   height: 150px;
 }
@@ -41,10 +42,39 @@ h1 {
   height: 100px;
 }
 
+
+
 .wall{
-  margin-top: 110px;
+  margin-top: 290px;
   height: 450px;
   left: 1000px;
   position:absolute;
+}
+  .Wall2{
+  display:none;
+  }
+
+
+.level2{
+  position: absolute;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 700px;
+  left: 680px;
+  z-index: 2;
+
+    .colors{
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 50%;
+      margin-top: 100px;
+      margin-left: 80px;
+      border:6px dotted black;
+      display:none;
+
+
+    }
 
 }
