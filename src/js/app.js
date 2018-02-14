@@ -6,7 +6,7 @@ $(() => {
   const $key = $('.key');
   let key = false;
   const $Wall1 = $('.Wall1');
-  const $Wall2 = $('.Wall2');
+  let $Wall2 = $('.Wall2');
   const $heading = $('.heading');
   const $color1 = $('#color1');
   const $color2 = $('#color2');
@@ -179,22 +179,23 @@ $(() => {
   }
 
   function moveDoggyRight(){
-    if (level1Prompts()) {
+    if (level1Prompts() && backgroundIndex === 0) {
       if($doggy.attr('src').match(/png/)) {
         $doggy.attr('src', '/images/dog_right.gif');
       }
       $doggy.css({ left: '+=10' });
       console.log('lol', $doggy.position().left, key);
     }
-    if ($doggy.position().left >= 2000) changeLevel();
 
-    if(level2Prompts()){
+    if(level2Prompts() && backgroundIndex === 1){
+      console.log('lol', $doggy.position().left, key);
       if($doggy.attr('src').match(/png/)) {
         $doggy.attr('src', '/images/dog_right.gif');
       }
       $doggy.css({ left: '+=10' });
-
     }
+
+    if ($doggy.position().left >= 2000) changeLevel();
   }
 
 
@@ -222,14 +223,21 @@ $(() => {
     // has key = move
     return true;
   }
+
+
   function level2Prompts(){
-    if ($Wall2){
-      if ($doggy.position().left >= 1000){
+    if ($Wall2) {
+      if ($doggy.position().left >= 900){
+        // at the wall
         return false;
       }
-      console.log('working');
+      // wall up, but not there
+      return true;
     }
+    // no wall
+    return true;
   }
+
 
 
 
@@ -240,7 +248,9 @@ $(() => {
     if ($color1.css('background-color') === 'rgb(255, 255, 0)' && $color2.css('background-color') === 'rgb(0, 0, 255)' && $color3.css('background-color') === 'rgb(0, 128, 0)'){
       console.log('correct colors');
       $Wall2.remove();
-    }return false;
+      $Wall2 = false;
+      console.log('wall gone');
+    }return true;
   }
 
 
