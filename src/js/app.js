@@ -7,7 +7,7 @@ $(() => {
   let key = false;
   const $Wall1 = $('.Wall1');
   let $Wall2 = $('.Wall2');
-  const $Wall3 = $('.Wall3');
+  let $Wall3 = $('.Wall3');
   const $heading = $('.heading');
   const $color1 = $('#color1');
   const $color2 = $('#color2');
@@ -124,6 +124,7 @@ $(() => {
       level1Prompts();
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $colors.show();
+      $('.insect').show();
       $Wall2.show();
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
@@ -140,7 +141,7 @@ $(() => {
       $colors.remove();
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
-      $heading.text('Take the time to look around');
+      $heading.text('How many blue flowers can you see?');
       $Wall3.show();
       $clicker.show();
 
@@ -260,7 +261,7 @@ $(() => {
 
   function level3Prompts(){
     if ($Wall3){
-      if ($doggy.position().left >= 1550){
+      if ($doggy.position().left >= 1450){
         return false;
       }
       return true;
@@ -268,50 +269,61 @@ $(() => {
     return true;
   }
 
-  $clicker.hover(() => {
-    $($heading).html('How many blue flowers do you see?');
+
+  $clicker.one('mouseover', () => {
+    ($heading).html('Take the time to look around');
+  });
+  $heading.mouseleave(function() {
+
   });
 
   $('button').on('click', checkNumber);
 
   let answer1 = false;
   let answer2 = false;
-  
+  let answer3 = false;
+  let answer4 = false;
+  const incorrect = 'Not quite! Have another look!';
+
   function checkNumber(e) {
-    console.log('clicked');
+    console.log('heading:', $heading.text());
     console.log('clickedButton', $(e.target).html());
     const clickedButton = $(e.target).html();
-    if ($heading.html() === 'How many blue flowers do you see?') {
-      if (clickedButton === '6') {
+    if (!answer1) {
+      if (clickedButton === '5') {
         answer1 = true;
         $heading.text('Great! What about purple flowers?');
+      } else {
+        $heading.text(incorrect);
       }
-    }
-    if ($heading.html() === 'Great! What about purple flowers?') {
-      if (clickedButton === '4') {
+    } else if (!answer2) {
+      if (clickedButton === '3') {
         answer2 = true;
-        $heading.text('Great! You win');
+        $heading.text('If you add those together, what do you get?');
+      } else {
+        $heading.text(incorrect);
       }
+    } else if (!answer3) {
+      if (clickedButton === '8') {
+        answer3 = true;
+        $heading.text('Do you see any insects?');
+      } else {
+        $heading.text(incorrect);
+      }
+    } else if (!answer4) {
+      if (clickedButton === '1') {
+        answer4 = true;
+        $heading.text('Amazing job. You\'re a real explorer');
+      }
+
     }
-    if (answer1 && answer2) {
+    if (answer1 && answer2 && answer3 && answer4)  {
       $Wall3.remove();
+      $Wall3 = false;
     }
   }
 
 
-  // function collectNumbers(){
-  //   console.log('counting');
-  //   if ($button6.one('click'())){
-  //     $heading.text('Great! What about purple flowers?');
-  //   }else if(!$button6.click()){
-  //     $heading.text('Not quite! Give it another go!');
-  //   }
-  //   if ($heading.html('Great! What about purple flowers?') && $button4.one.click()){
-  //     $heading.text('If we add all the flowers up, how many do we have in total?');
-  //   }else if(!$button4.click()){
-  //     $heading.text('Not quite! Give it another go!');
-  //   }
-  // }
   function checkColors(){
     console.log('checking');
     console.log($color1.css('background-color'));

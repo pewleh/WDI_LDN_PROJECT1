@@ -16,7 +16,7 @@ body{
 h1 {
   text-align: center;
   font-size: 33px;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 .lvl2{
   left: 300px;
@@ -85,8 +85,10 @@ h1 {
     }
 }
 .bttns{
-  margin-left: 400px;
+  margin-left: 580px;
   display: inline-flex;
+  position: absolute;
+
 }
 button{
   width:100px;
@@ -96,4 +98,10 @@ button{
   margin-left: 20px;
   display:none;
 
+
+}
+
+.insect{
+  width: 450px;
+  display:none;
 }
