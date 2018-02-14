@@ -7,11 +7,17 @@ $(() => {
   let key = false;
   const $Wall1 = $('.Wall1');
   let $Wall2 = $('.Wall2');
+  const $Wall3 = $('.Wall3');
   const $heading = $('.heading');
   const $color1 = $('#color1');
   const $color2 = $('#color2');
   const $color3 = $('#color3');
   const $colors = $('.colors');
+  const $clicker = $('.clicker');
+  // let clickedButton = null;
+  // const $button6 = $('.6');
+  // const $button4 = $('.4');
+  // const $button10 = $('.10');
   // const wall = false;
 
 
@@ -95,6 +101,8 @@ $(() => {
     $(e.target).html('The trees');
   });
 
+
+
   //First level Chest Click function.
 
   $chest.click(function(){
@@ -125,15 +133,18 @@ $(() => {
       level2Prompts();
 
 
-
       // level 3 settings:
     } else if (backgroundIndex === 2) {
-      level2Prompts();
-      console.log('level 3!');
+      level2Prompts();     console.log('level 3!');
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $colors.remove();
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
+      $heading.text('Take the time to look around');
+      $Wall3.show();
+      $clicker.show();
+
+
       //level 4 settings:
     }else if (backgroundIndex === 3) {
       console.log('level 4!');
@@ -141,12 +152,14 @@ $(() => {
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
 
+
       //level 5 settings:
     }else if (backgroundIndex === 4) {
       console.log('level 3!');
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
+
     }
   }
 
@@ -189,6 +202,13 @@ $(() => {
 
     if(level2Prompts() && backgroundIndex === 1){
       console.log('lol', $doggy.position().left, key);
+      if($doggy.attr('src').match(/png/)) {
+        $doggy.attr('src', '/images/dog_right.gif');
+      }
+      $doggy.css({ left: '+=10' });
+    }
+    //(level3Prompts() &&
+    if (level3Prompts() && backgroundIndex === 2){
       if($doggy.attr('src').match(/png/)) {
         $doggy.attr('src', '/images/dog_right.gif');
       }
@@ -238,10 +258,60 @@ $(() => {
     return true;
   }
 
+  function level3Prompts(){
+    if ($Wall3){
+      if ($doggy.position().left >= 1550){
+        return false;
+      }
+      return true;
+    }
+    return true;
+  }
+
+  $clicker.hover(() => {
+    $($heading).html('How many blue flowers do you see?');
+  });
+
+  $('button').on('click', checkNumber);
+
+  let answer1 = false;
+  let answer2 = false;
+  
+  function checkNumber(e) {
+    console.log('clicked');
+    console.log('clickedButton', $(e.target).html());
+    const clickedButton = $(e.target).html();
+    if ($heading.html() === 'How many blue flowers do you see?') {
+      if (clickedButton === '6') {
+        answer1 = true;
+        $heading.text('Great! What about purple flowers?');
+      }
+    }
+    if ($heading.html() === 'Great! What about purple flowers?') {
+      if (clickedButton === '4') {
+        answer2 = true;
+        $heading.text('Great! You win');
+      }
+    }
+    if (answer1 && answer2) {
+      $Wall3.remove();
+    }
+  }
 
 
-
-
+  // function collectNumbers(){
+  //   console.log('counting');
+  //   if ($button6.one('click'())){
+  //     $heading.text('Great! What about purple flowers?');
+  //   }else if(!$button6.click()){
+  //     $heading.text('Not quite! Give it another go!');
+  //   }
+  //   if ($heading.html('Great! What about purple flowers?') && $button4.one.click()){
+  //     $heading.text('If we add all the flowers up, how many do we have in total?');
+  //   }else if(!$button4.click()){
+  //     $heading.text('Not quite! Give it another go!');
+  //   }
+  // }
   function checkColors(){
     console.log('checking');
     console.log($color1.css('background-color'));
@@ -252,6 +322,7 @@ $(() => {
       console.log('wall gone');
     }return true;
   }
+
 
 
 });
