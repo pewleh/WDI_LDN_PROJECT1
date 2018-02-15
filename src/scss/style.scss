@@ -13,11 +13,49 @@ body{
 
 }
 
+.introduction{
+  position: absolute;
+  left: 755px;
+  background-color: rgba(106,136,83,1);
+;
+  width:1000px;
+  height: 800px;
+  border-radius: 25%;
+  box-shadow: 2px 3px 57px 11px rgba(71,49,41,0.89);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+#insideText{
+  background-color: rgba(0, 49, 35, 1);
+  margin-top: 80px;
+
+  margin-left: 90px;
+  height: 600px;
+  width: 800px;
+  border-radius: 25%;
+  opacity: 10;
+  text-align: center;
+  color: #cecece;
+  font-size: 40px;
+  padding: 20px;
+
+.explore{
+  width: 200px;
+  height: 65px;
+  font-size: 1em;
+  font-family: 'Kavivanar', cursive;
+
+}
+}
 h1 {
   text-align: center;
   font-size: 50px;
   margin-top: 50px;
+  position:relative;
+   z-index: 500;
 }
+
 .lvl2{
   left: 300px;
 }
@@ -26,12 +64,12 @@ h1 {
   height: 100px;
   width: auto;
   position: absolute;
-  margin-top: 405px;
+  margin-top: 350px;
   height: 300px;
 }
 
 .closedChest{
-  margin-top: 525px;
+  margin-top: 450px;
   margin-left: 100px;
   height: 150px;
 }
@@ -48,7 +86,7 @@ h1 {
 
 
 .wall{
-  margin-top: 245px;
+  margin-top: 190px;
   height: 450px;
   left: 1000px;
   position:absolute;
@@ -74,7 +112,7 @@ h1 {
   justify-content: space-around;
   width: 1400px;
   z-index: 2;
-  left: 500px;
+  left: 600px;
 
     .colors{
       width: 100px;
@@ -82,7 +120,7 @@ h1 {
       background-color: white;
       padding: 30px;
       border-radius: 50%;
-      margin-top: 80px;
+      margin-top: 30px;
       border:6px dotted black;
       display:none;
       justify-content: space-around;
@@ -101,10 +139,6 @@ h1 {
   font-size: 30px;
   margin-left: 20px;
   display:none;
-
-  .play{
-    display: block;
-  }
 }
 
 .insect{

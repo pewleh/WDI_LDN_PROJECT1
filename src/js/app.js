@@ -1,20 +1,4 @@
 $(() => {
-  //AUDIO
-  const audio = $('audio').get(0);
-  const $playBtn = $('.play');
-
-  $playBtn.click(function(e){
-    if(audio.paused) audio.play();
-    else audio.pause();
-
-    $(e.target).html(audio.paused ? 'play' : 'paused');
-
-  });
-
-
-
-
-
 
   //Stored variables
   console.log('hello');
@@ -32,6 +16,8 @@ $(() => {
   const $color3 = $('#color3');
   const $colors = $('.colors');
   const $clicker = $('.clicker');
+  const $explore = $('.explore')
+
 
   //backgrounds
   const backgrounds = [
@@ -56,13 +42,16 @@ $(() => {
     'yellow',
     'red'
   ];
+
+
   $color1.click(function(){
     //if color array reaches the final color, order position to start.
     if(colorPos > [5]){
       colorPos=0;
     }
-
     $color1.css({'background-color': `${colorLevel[colorPos]}`});
+    $('.tinyClick').get(0).play();
+    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
   });
@@ -77,6 +66,8 @@ $(() => {
       colorPos=0;
     }
     $color2.css({'background-color': `${colorLevel[colorPos]}`});
+    $('.tinyClick').get(0).play();
+    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
   });
@@ -89,6 +80,8 @@ $(() => {
       colorPos=0;
     }
     $color3.css({'background-color': `${colorLevel[colorPos]}`});
+    $('.tinyClick').get(0).play();
+    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
   });
@@ -103,11 +96,21 @@ $(() => {
   $chest.click(function(){
     $chest.attr('src', '/images/chest_open.png');
     $key.show();
+    $('.chest').get(0).play();
   });
 
   // Doggies Move Logic.
   $(document).keydown(startDoggy);
   $(document).keyup(stopDoggy);
+
+  //Close the introduction
+
+  $explore.on('click', () => {
+    console.log('clicked');
+    $('.introduction').remove();
+  });
+
+
 
   //LEVEL 1 WIN SETTINGS
 
@@ -120,6 +123,7 @@ $(() => {
     console.log('help');
     key = true;
     $heading.text('Great Job! Walk on down!');
+    $('.door').get(0).play();
   }
 
   // New level changes
@@ -193,6 +197,7 @@ $(() => {
       $doggy.attr('src', '/images/dog_left.gif');
     }
     $doggy.css({left: '-=10' });
+    $('.walking').get(0).play();
   }
 
   function moveDoggyRight(){
@@ -201,6 +206,7 @@ $(() => {
         $doggy.attr('src', '/images/dog_right.gif');
       }
       $doggy.css({ left: '+=10' });
+      $('.walking').get(0).play();
       console.log('lol', $doggy.position().left, key);
     }
 
@@ -233,6 +239,7 @@ $(() => {
   function stopDoggy() {
     const src = $doggy.attr('src').replace('.gif', '.png');
     $doggy.attr('src', src);
+    $('.walking').get(0).pause();
   }
   //LEVEL 1 STOP POINTS:
   function level1Prompts(){
@@ -242,7 +249,7 @@ $(() => {
         return false;
       }
       if ($doggy.position().left >= 300){
-        $heading.text('Use A and D to move');
+        $heading.text('Hover over a guide for help!');
         console.log('working');
       }
       if($doggy.position().left >= 750){
@@ -297,7 +304,20 @@ $(() => {
 
   });
 
-  $('button').on('click', checkNumber);
+  $('.bttns').on('click', checkNumber);
+
+
+  function checkColors(){
+    console.log('checking');
+    console.log($color1.css('background-color'));
+    if ($color1.css('background-color') === 'rgb(255, 255, 0)' && $color2.css('background-color') === 'rgb(0, 0, 255)' && $color3.css('background-color') === 'rgb(0, 128, 0)'){
+      console.log('correct colors');
+      $Wall2.remove();
+      $Wall2 = false;
+      $('.door').get(0).play();
+      console.log('wall gone');
+    }return true;
+  }
 
   let answer1 = false;
   let answer2 = false;
@@ -343,17 +363,6 @@ $(() => {
     }
   }
 
-
-  function checkColors(){
-    console.log('checking');
-    console.log($color1.css('background-color'));
-    if ($color1.css('background-color') === 'rgb(255, 255, 0)' && $color2.css('background-color') === 'rgb(0, 0, 255)' && $color3.css('background-color') === 'rgb(0, 128, 0)'){
-      console.log('correct colors');
-      $Wall2.remove();
-      $Wall2 = false;
-      console.log('wall gone');
-    }return true;
-  }
 
 
 
