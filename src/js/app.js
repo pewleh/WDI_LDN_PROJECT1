@@ -18,6 +18,7 @@ $(() => {
   const $clicker = $('.clicker');
   const $explore = $('.explore');
   const $guide = $('.dude');
+  const $demo = $('.demoScreen');
 
 
 
@@ -131,7 +132,7 @@ $(() => {
       $('#help').text('It\'s important to be observant if you want to be the best explorer');
     }
     if(backgroundIndex === 3){
-      $('#help').text('You\'ve had a great first day! Just one puzzle left to solve.');
+      $('#help').text('You\'ve had a great first day!');
       guideShut();
     }
   }
@@ -199,10 +200,13 @@ $(() => {
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
-      $heading.text('Walk in the World');
+      // $heading.text('Walk in the World');
       $clicker.remove();
       $('.insect').remove();
       $Wall4.show();
+      $heading.text('Aaaand thats the DEMO!');
+      $demo.show();
+      $('#demoText').show();
 
       //level 5 settings:
     }else if (backgroundIndex === 4) {
@@ -333,12 +337,6 @@ $(() => {
   }
 
 
-  //Level 3 logic
-
-
-  $('.bttns').on('click', checkNumber);
-
-
   function checkColors(){
     console.log('checking');
     console.log($color1.css('background-color'));
@@ -350,6 +348,12 @@ $(() => {
       console.log('wall gone');
     }return true;
   }
+  //Level 3 logic
+
+
+  $('.bttns').on('click', checkNumber);
+
+
 
   let answer1 = false;
   let answer2 = false;
@@ -386,12 +390,57 @@ $(() => {
       if (clickedButton === '1') {
         answer4 = true;
         $heading.text('Amazing job. You\'re a real explorer');
+      } else {
+        $heading.text(incorrect);
       }
 
     }
     if (answer1 && answer2 && answer3 && answer4)  {
       $Wall3.remove();
+      $('.door').get(0).play();
       $Wall3 = false;
     }
   }
+
+  // LEVEL 4 LOGIC
+
+
+  //Logic for what would have been level 4.
+
+
+  // let foundItem1 = false;
+  // let foundItem2 = false;
+  // let foundItem3 = false;
+  //
+  // function buildHouse(e) {
+  //
+  //   const clickedItem = $(e.target).html();
+  //   if (!foundItem1) {
+  //     if (clickedItem === ('$sticks')) {
+  //       foundItem1 = true;
+  //       $heading.text('Good. We have a base. Shall we find something for a roof?');
+  //     } else {
+  //       $heading.text(incorrect);
+  //     }
+  //     if(!foundItem2) {
+  //       if (clickedItem === ('$roof')) {
+  //         foundItem2 = true;
+  //         $heading.text('It\'s a little dark isn\'t it? Lets try catching some fireflies');
+  //       } else {
+  //         $heading.text(incorrect);
+  //       }
+  //       if(!foundItem3) {
+  //         if (clickedItem === ('$roof')) {
+  //           foundItem3 = true;
+  //           $heading.text('Wow wow! Walk up ahead and see if theres anything we can find to eat!');
+  //         }
+  //       }
+  //       if (foundItem1 && foundItem2 && foundItem3)  {
+  //         $Wall4.remove();
+  //         $Wall4 = false;
+  //       }
+  //     }
+  //   }
+  // }
+
 });
