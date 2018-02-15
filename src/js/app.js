@@ -16,7 +16,9 @@ $(() => {
   const $color3 = $('#color3');
   const $colors = $('.colors');
   const $clicker = $('.clicker');
-  const $explore = $('.explore')
+  const $explore = $('.explore');
+  const $guide = $('.dude');
+
 
 
   //backgrounds
@@ -56,9 +58,6 @@ $(() => {
     checkColors();
   });
 
-  $color1.hover((e) => {
-    $(e.target).html('The sun');
-  });
 
 
   $color2.click(function(){
@@ -70,9 +69,7 @@ $(() => {
     $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
-  });
-  $color2.hover((e) => {
-    $(e.target).html('The sky');
+
   });
 
   $color3.click(function(){
@@ -85,24 +82,54 @@ $(() => {
     colorPos += 1;
     checkColors();
   });
-  $color3.hover((e) => {
-    $(e.target).html('The trees');
-  });
+
 
 
 
   //First level Chest Click function.
-
+  $chest.on('mouseover', ()=>{
+    $('#help').text('Have a click!');
+  });
   $chest.click(function(){
     $chest.attr('src', '/images/chest_open.png');
     $key.show();
     $('.chest').get(0).play();
+
   });
 
   // Doggies Move Logic.
   $(document).keydown(startDoggy);
   $(document).keyup(stopDoggy);
 
+  //GUIDE COMMANDS
+  function guideTalk(){
+    $('.guide').attr('src', '/images/guidetalk.png');
+
+
+  }
+  function guideShut(){
+    $('.guide').attr('src', '/images/guide.png');
+  }
+  $guide.on('mouseover', () => {
+    console.log('hover');
+    guideTalk();
+    guideText();
+  });
+  $guide.on('mouseleave', () => {
+    guideShut();
+  });
+
+  function guideText(){
+    if(backgroundIndex === 0){
+      $('#help').text('Use A and D to move!');
+    }
+    if(backgroundIndex === 1){
+      $('#help').text('♪♪I see the sun, I see the sky, I see the grass and trees go by   ♪♪.');
+    }
+    if(backgroundIndex === 2){
+      $('#help').text('It\'s helpful to be observant.');
+    }
+  }
   //Close the introduction
 
   $explore.on('click', () => {
@@ -124,6 +151,7 @@ $(() => {
     key = true;
     $heading.text('Great Job! Walk on down!');
     $('.door').get(0).play();
+    $('#help').text(' ');
   }
 
   // New level changes
@@ -142,7 +170,7 @@ $(() => {
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
       $chest.remove();
-      $heading.text('Try hovering your mouse over the circles in the sky');
+      $heading.text('Find the correct colour code');
       checkColors();
       level2Prompts();
 
@@ -179,7 +207,7 @@ $(() => {
 
     }
   }
-
+  //DOG MOVE LOGIC
 
   function startDoggy(e) {
     switch (e.which) {
@@ -202,6 +230,7 @@ $(() => {
 
   function moveDoggyRight(){
     if (level1Prompts() && backgroundIndex === 0) {
+
       if($doggy.attr('src').match(/png/)) {
         $doggy.attr('src', '/images/dog_right.gif');
       }
@@ -223,6 +252,7 @@ $(() => {
         $doggy.attr('src', '/images/dog_right.gif');
       }
       $doggy.css({ left: '+=10' });
+      $('#help').text('');
     }
 
     if (level4Prompts() && backgroundIndex === 3){
@@ -273,6 +303,7 @@ $(() => {
       return true;
     }
     // no wall
+    $('#help').text('Nice!');
     return true;
   }
   //LEVEL 3 STOP POINTS
@@ -297,12 +328,7 @@ $(() => {
 
 
   //Level 3 logic
-  $clicker.one('mouseover', () => {
-    ($heading).html('Take the time to look around');
-  });
-  $heading.mouseleave(function() {
 
-  });
 
   $('.bttns').on('click', checkNumber);
 

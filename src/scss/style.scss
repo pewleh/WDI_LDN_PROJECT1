@@ -22,7 +22,7 @@ body{
   height: 800px;
   border-radius: 25%;
   box-shadow: 2px 3px 57px 11px rgba(71,49,41,0.89);
-  z-index: 1;
+  z-index: 100;
   opacity: 0.9;
 }
 
@@ -45,7 +45,7 @@ body{
   height: 65px;
   font-size: 1em;
   font-family: 'Kavivanar', cursive;
-
+  border-radius: 45%;
 }
 }
 h1 {
@@ -54,6 +54,32 @@ h1 {
   margin-top: 50px;
   position:relative;
    z-index: 500;
+}
+
+.dude {
+  position: absolute;
+  display: inline;
+  left: -40px;
+  top: 465px;
+  z-index: 1;
+
+  #help{
+    position:absolute;
+    left:1300px;
+    background-color: #cecece;
+    border-radius: 30%;
+    width: relative;
+    padding: 30px;
+    font-family: monospace;
+    font-size: 25px;
+  }
+}
+.guide{
+  left: 1400px;
+  height: 400px;
+  position: absolute;
+  z-index: 100;
+
 }
 
 .lvl2{
@@ -66,6 +92,7 @@ h1 {
   position: absolute;
   margin-top: 350px;
   height: 300px;
+  z-index: 500;
 }
 
 .closedChest{
