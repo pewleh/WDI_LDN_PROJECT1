@@ -15,7 +15,7 @@ body{
 
 h1 {
   text-align: center;
-  font-size: 33px;
+  font-size: 50px;
   margin-top: 50px;
 }
 .lvl2{
@@ -26,12 +26,12 @@ h1 {
   height: 100px;
   width: auto;
   position: absolute;
-  margin-top: 450px;
+  margin-top: 405px;
   height: 300px;
 }
 
 .closedChest{
-  margin-top: 570px;
+  margin-top: 525px;
   margin-left: 100px;
   height: 150px;
 }
@@ -48,7 +48,7 @@ h1 {
 
 
 .wall{
-  margin-top: 290px;
+  margin-top: 245px;
   height: 450px;
   left: 1000px;
   position:absolute;
@@ -62,6 +62,10 @@ h1 {
      display:none;
      left:1630px;
   }
+  .Wall4{
+    left:1800px;
+    display:none;
+  }
 
 
 .level2{
@@ -70,6 +74,7 @@ h1 {
   justify-content: space-around;
   width: 1400px;
   z-index: 2;
+  left: 500px;
 
     .colors{
       width: 100px;
@@ -77,8 +82,7 @@ h1 {
       background-color: white;
       padding: 30px;
       border-radius: 50%;
-      margin-top: 100px;
-      margin-left: 80px;
+      margin-top: 80px;
       border:6px dotted black;
       display:none;
       justify-content: space-around;
@@ -90,7 +94,7 @@ h1 {
   position: absolute;
 
 }
-button{
+.clicker{
   width:100px;
   height:100px;
   border-radius: 30%;
@@ -98,7 +102,9 @@ button{
   margin-left: 20px;
   display:none;
 
-
+  .play{
+    display: block;
+  }
 }
 
 .insect{

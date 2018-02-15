@@ -1,4 +1,21 @@
 $(() => {
+  //AUDIO
+  const audio = $('audio').get(0);
+  const $playBtn = $('.play');
+
+  $playBtn.click(function(e){
+    if(audio.paused) audio.play();
+    else audio.pause();
+
+    $(e.target).html(audio.paused ? 'play' : 'paused');
+
+  });
+
+
+
+
+
+
   //Stored variables
   console.log('hello');
   const $doggy = $('.dog');
@@ -8,21 +25,15 @@ $(() => {
   const $Wall1 = $('.Wall1');
   let $Wall2 = $('.Wall2');
   let $Wall3 = $('.Wall3');
+  let $Wall4 = $('.Wall4');
   const $heading = $('.heading');
   const $color1 = $('#color1');
   const $color2 = $('#color2');
   const $color3 = $('#color3');
   const $colors = $('.colors');
   const $clicker = $('.clicker');
-  // let clickedButton = null;
-  // const $button6 = $('.6');
-  // const $button4 = $('.4');
-  // const $button10 = $('.10');
-  // const wall = false;
 
-
-  //Background imagesand starting point.
-
+  //backgrounds
   const backgrounds = [
     '/images/backdrop2.png',
     '/images/backdrop3.png',
@@ -37,15 +48,16 @@ $(() => {
 
   let colorPos = 0;
 
+  const colorLevel = [
+    'pink',
+    'blue',
+    'orange',
+    'rgb(0,128,0)',
+    'yellow',
+    'red'
+  ];
   $color1.click(function(){
-    const colorLevel = [
-      'pink',
-      'blue',
-      'orange',
-      'rgb(0,128,0)',
-      'yellow',
-      'red'
-    ];
+    //if color array reaches the final color, order position to start.
     if(colorPos > [5]){
       colorPos=0;
     }
@@ -61,14 +73,6 @@ $(() => {
 
 
   $color2.click(function(){
-    const colorLevel = [
-      'pink',
-      'blue',
-      'orange',
-      'green',
-      'yellow',
-      'red'
-    ];
     if(colorPos > [5]){
       colorPos=0;
     }
@@ -81,15 +85,6 @@ $(() => {
   });
 
   $color3.click(function(){
-    const colorLevel = [
-      'pink',
-      'blue',
-      'orange',
-      'green',
-      'yellow',
-      'red'
-
-    ];
     if(colorPos > [5]){
       colorPos=0;
     }
@@ -113,13 +108,27 @@ $(() => {
   // Doggies Move Logic.
   $(document).keydown(startDoggy);
   $(document).keyup(stopDoggy);
+
+  //LEVEL 1 WIN SETTINGS
+
   $key.click(getKey);
+
+  function getKey() {
+    $key.remove();
+    console.log('please');
+    $Wall1.remove();
+    console.log('help');
+    key = true;
+    $heading.text('Great Job! Walk on down!');
+  }
 
   // New level changes
   function changeLevel() {
     backgroundIndex++;
     console.log('switching levels', backgrounds, backgroundIndex);
-    // level 2 settings:
+
+
+    // lEVEL 2 START SETTINGS:
     if (backgroundIndex === 1) {
       level1Prompts();
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
@@ -134,7 +143,7 @@ $(() => {
       level2Prompts();
 
 
-      // level 3 settings:
+      // LEVEL 3 START SETTINGS
     } else if (backgroundIndex === 2) {
       level2Prompts();     console.log('level 3!');
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
@@ -152,11 +161,14 @@ $(() => {
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
-
+      $heading.text('Walk in the World');
+      $clicker.remove();
+      $('.insect').remove();
+      $Wall4.show();
 
       //level 5 settings:
     }else if (backgroundIndex === 4) {
-      console.log('level 3!');
+      console.log('level 5!');
       $('body').css('background-image', `url(${backgrounds[backgroundIndex]})`);
       $doggy.css({ left: '10px'});
       $doggy.css({ margintop: '350px'});
@@ -164,15 +176,6 @@ $(() => {
     }
   }
 
-
-  function getKey() {
-    $key.remove();
-    console.log('please');
-    $Wall1.remove();
-    console.log('help');
-    key = true;
-    $heading.text('Great Job! Walk on down!');
-  }
 
   function startDoggy(e) {
     switch (e.which) {
@@ -208,8 +211,15 @@ $(() => {
       }
       $doggy.css({ left: '+=10' });
     }
-    //(level3Prompts() &&
+
     if (level3Prompts() && backgroundIndex === 2){
+      if($doggy.attr('src').match(/png/)) {
+        $doggy.attr('src', '/images/dog_right.gif');
+      }
+      $doggy.css({ left: '+=10' });
+    }
+
+    if (level4Prompts() && backgroundIndex === 3){
       if($doggy.attr('src').match(/png/)) {
         $doggy.attr('src', '/images/dog_right.gif');
       }
@@ -224,7 +234,7 @@ $(() => {
     const src = $doggy.attr('src').replace('.gif', '.png');
     $doggy.attr('src', src);
   }
-
+  //LEVEL 1 STOP POINTS:
   function level1Prompts(){
     if (!key) {
       if ($doggy.position().left >= 850) {
@@ -245,10 +255,10 @@ $(() => {
     return true;
   }
 
-
+  //LEVEL 2 STOP POINTS
   function level2Prompts(){
     if ($Wall2) {
-      if ($doggy.position().left >= 900){
+      if ($doggy.position().left >= 1350){
         // at the wall
         return false;
       }
@@ -258,7 +268,7 @@ $(() => {
     // no wall
     return true;
   }
-
+  //LEVEL 3 STOP POINTS
   function level3Prompts(){
     if ($Wall3){
       if ($doggy.position().left >= 1450){
@@ -268,8 +278,18 @@ $(() => {
     }
     return true;
   }
+  function level4Prompts(){
+    if ($Wall4){
+      if ($doggy.position().left >= 1650){
+        return false;
+      }
+      return true;
+    }
+    return true;
+  }
 
 
+  //Level 3 logic
   $clicker.one('mouseover', () => {
     ($heading).html('Take the time to look around');
   });
