@@ -47,13 +47,13 @@ $(() => {
 
 
   $color1.click(function(){
+    $('.tinyClick').get(0).currentTime = (0);
+    $('.tinyClick').get(0).play();
     //if color array reaches the final color, order position to start.
     if(colorPos > [5]){
       colorPos=0;
     }
     $color1.css({'background-color': `${colorLevel[colorPos]}`});
-    $('.tinyClick').get(0).play();
-    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
   });
@@ -61,24 +61,24 @@ $(() => {
 
 
   $color2.click(function(){
+    $('.tinyClick').get(0).currentTime = (0);
+    $('.tinyClick').get(0).play();
     if(colorPos > [5]){
       colorPos=0;
     }
     $color2.css({'background-color': `${colorLevel[colorPos]}`});
-    $('.tinyClick').get(0).play();
-    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
 
   });
 
   $color3.click(function(){
+    $('.tinyClick').get(0).currentTime = (0);
+    $('.tinyClick').get(0).play();
     if(colorPos > [5]){
       colorPos=0;
     }
     $color3.css({'background-color': `${colorLevel[colorPos]}`});
-    $('.tinyClick').get(0).play();
-    $('.tinyClick').currentTime = (0);
     colorPos += 1;
     checkColors();
   });
@@ -105,18 +105,19 @@ $(() => {
   function guideTalk(){
     $('.guide').attr('src', '/images/guidetalk.png');
 
-
   }
   function guideShut(){
     $('.guide').attr('src', '/images/guide.png');
   }
   $guide.on('mouseover', () => {
     console.log('hover');
+    $('.speech').get(0).play();
     guideTalk();
     guideText();
+
   });
   $guide.on('mouseleave', () => {
-    guideShut();
+    guideShut('...');
   });
 
   function guideText(){
@@ -127,9 +128,14 @@ $(() => {
       $('#help').text('♪♪I see the sun, I see the sky, I see the grass and trees go by   ♪♪.');
     }
     if(backgroundIndex === 2){
-      $('#help').text('It\'s helpful to be observant.');
+      $('#help').text('It\'s important to be observant if you want to be the best explorer');
+    }
+    if(backgroundIndex === 3){
+      $('#help').text('You\'ve had a great first day! Just one puzzle left to solve.');
+      guideShut();
     }
   }
+
   //Close the introduction
 
   $explore.on('click', () => {
@@ -303,7 +309,7 @@ $(() => {
       return true;
     }
     // no wall
-    $('#help').text('Nice!');
+    $('#help').text('');
     return true;
   }
   //LEVEL 3 STOP POINTS
@@ -388,8 +394,4 @@ $(() => {
       $Wall3 = false;
     }
   }
-
-
-
-
 });
