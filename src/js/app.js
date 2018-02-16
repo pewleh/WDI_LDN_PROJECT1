@@ -368,6 +368,7 @@ $(() => {
     if (!answer1) {
       if (clickedButton === '5') {
         answer1 = true;
+        
         $heading.text('Great! What about purple flowers?');
       } else {
         $heading.text(incorrect);
@@ -408,39 +409,39 @@ $(() => {
   //Logic for what would have been level 4.
 
 
-  // let foundItem1 = false;
-  // let foundItem2 = false;
-  // let foundItem3 = false;
-  //
-  // function buildHouse(e) {
-  //
-  //   const clickedItem = $(e.target).html();
-  //   if (!foundItem1) {
-  //     if (clickedItem === ('$sticks')) {
-  //       foundItem1 = true;
-  //       $heading.text('Good. We have a base. Shall we find something for a roof?');
-  //     } else {
-  //       $heading.text(incorrect);
-  //     }
-  //     if(!foundItem2) {
-  //       if (clickedItem === ('$roof')) {
-  //         foundItem2 = true;
-  //         $heading.text('It\'s a little dark isn\'t it? Lets try catching some fireflies');
-  //       } else {
-  //         $heading.text(incorrect);
-  //       }
-  //       if(!foundItem3) {
-  //         if (clickedItem === ('$roof')) {
-  //           foundItem3 = true;
-  //           $heading.text('Wow wow! Walk up ahead and see if theres anything we can find to eat!');
-  //         }
-  //       }
-  //       if (foundItem1 && foundItem2 && foundItem3)  {
-  //         $Wall4.remove();
-  //         $Wall4 = false;
-  //       }
-  //     }
-  //   }
-  // }
+  let foundItem1 = false;
+  let foundItem2 = false;
+  let foundItem3 = false;
+
+  function buildHouse(e) {
+
+    const clickedItem = $(e.target).html();
+    if (!foundItem1) {
+      if (clickedItem === $('.sticks')) {
+        foundItem1 = true;
+        $heading.text('Good. We have a base. Shall we find something for a roof?');
+      } else {
+        $heading.text(incorrect);
+      }
+      if(!foundItem2) {
+        if (clickedItem === $('.map')) {
+          foundItem2 = true;
+          $heading.text('It\'s a little dark isn\'t it? Lets try catching some fireflies');
+        } else {
+          $heading.text(incorrect);
+        }
+        if(!foundItem3) {
+          if (clickedItem === $('.jar')) {
+            foundItem3 = true;
+            $heading.text('Wow wow! Walk up ahead and see if theres anything we can find to eat!');
+          }
+        }
+        if (foundItem1 && foundItem2 && foundItem3)  {
+          $Wall4.remove();
+          $Wall4 = false;
+        }
+      }
+    }
+  }
 
 });

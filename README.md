@@ -1,12 +1,11 @@
+# Walk in the World
 GA WDI LDN Project 1
-
-Walk in the World
 
 We were assigned to create a short in-browser game using HTML, CSS and choose between vanilla JavaScript or JQuery over the course of a four day period.
 I decided on creating something "original" rather than a remake of an already existing game.
 
-https://vast-inlet-66627.herokuapp.com/
-The game is not mobile responsive.
+https://vast-inlet-66627.herokuapp.com/<br>
+<em>The game is not mobile responsive.</em>
 
 Setup instructions:
 - Clone or download the repo
@@ -38,7 +37,7 @@ Sound affects were from various sources. I cut them down and looped a few to ens
 Background images were sourced from google images. Unfortunately I wasn't able to find the original creators.
 Some images were edited in order to fit more appropriately in the game.
 
-I would have been satisfied with the final product had I made the final level I planned to make. I knew that by creating something that has different win conditions and functionality in every level I would be very constricted with my time. Despite this, I'm fairly happy with the features I was able to implement within the game.
+I would have been satisfied with the final product had I completed the final level I intended to make. I knew that by creating something that has different win conditions and functionality in every level I would be very constricted with my time. Despite this, I'm fairly happy with the features I was able to implement within the game.
 
 If I were to return to this project I'd have levels that increased in difficulty, adding lives and lose conditions and a feature which allowed you to choose your character at the start of the level (as I had initially created two characters).
 
