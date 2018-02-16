@@ -368,7 +368,6 @@ $(() => {
     if (!answer1) {
       if (clickedButton === '5') {
         answer1 = true;
-        
         $heading.text('Great! What about purple flowers?');
       } else {
         $heading.text(incorrect);
