@@ -3,7 +3,7 @@
 html{
   overflow-y: scroll;
   font-family: 'Kavivanar', cursive;
-  zoom: 0.5; // TODO: THIS IS BAD! REMOVE THIS AND FIX THE LAYOUT FOR MOBILE x
+  zoom: 0.5;
 }
 body{
   background-image: url(/images/backdrop7.png);
@@ -259,6 +259,8 @@ h1 {
   }
 
 
-
+.readme-dog{
+  height:10vh;
+}
 
 }
