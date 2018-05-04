@@ -31,6 +31,7 @@ The only way to progress to the next destination is by completing the tasks. The
 <img src="src/images/4.png">
 As an incomplete adventure game, there isn't a way to "win" the game.
 In a way, I'd compare it to a colouring book. Each level requires you to "win" but there is no way to lose.
+<img src="src/images/win.png">
 
 
 The doggy and the guide were drawn and animated on a free online pixel maker.
@@ -38,6 +39,8 @@ Doggy was drawn 3 times. Stationary, left foot first and right foot first. I the
 Simplified for the guide, when his div is hovered over, one png is swapped for another to give the impression of speech.
 Sound affects were from various sources. I cut them down and looped a few to ensure I had an immediate and appropriate sound to its designated item.
 <img class="readme-dog" src="src/images/dog_right.gif">
+<img src="src/images/mv.png">
+<img src="src/images/stp.png">
 
 Background images were sourced from google images. Unfortunately I wasn't able to find the original creators.
 Some images were edited in order to fit more appropriately in the game.
